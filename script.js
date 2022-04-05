@@ -19,12 +19,11 @@ const checkTwoInts = function (n1, n2) {
 // console.log(checkTwoInts(25, 25));
 /* 3. Create a function to remove a character at a specified position from a given string: pass the position and the string as parameters, return the new string. */
 const removeCharacter = function (str, removedPostion) {
-  return str.replace(str.indexOf(removedPostion), " ");
+  const toArr = str.split(``);
+  return toArr;
 };
 const newstr = `we are going home soon`;
-console.log(`here`, newstr.slice());
-// console.log(removeCharacter(newstr, 1));
-console.log(newstr.slice(0, 3));
+console.log(removeCharacter(newstr));
 //? 4. Create a function to find and return the largest of three given integers.
 const returnLargestInt = function (n1, n2, n3) {
   let allNums = [n1, n2, n3];
@@ -150,18 +149,27 @@ const checkPositiveAndNegetiveNum = function (n1, n2) {
   }
 };
 console.log(checkPositiveAndNegetiveNum(2, 1));
-/* 16. Create a function to create and return a new string where the first 3 characters and in lower case and the others are in upper case. 
-    If the string's length is less than 3, convert the whole string into uppercase. Pass the original string as a parameter. */
+//? 16. Create a function to create and return a new string where the first 3 characters and in lower case and the others are in upper case.
+//?If the string's length is less than 3, convert the whole string into uppercase. Pass the original string as a parameter. */
 const firstThreeLetterToLower = function (str) {
   if (str.length < 3) {
     return str.toUpperCase();
   } else {
+    const allStrToLower = str.toUpperCase();
+    const firstThreeLetter = allStrToLower.slice(0, 3).toLowerCase();
+    return firstThreeLetter + allStrToLower.substring(3);
   }
 };
-console.log(firstThreeLetterToLower(`enhh`));
-/* 17. Create a function to calculate the sum of two integers (passed as parameters). 
-    If the sum is in the 50-80 range, return `65`, otherwise, return `80`. */
-
+console.log(firstThreeLetterToLower(`texas`));
+//? 17. Create a function to calculate the sum of two integers (passed as parameters).
+//? If the sum is in the 50-80 range, return `65`, otherwise, return `80`. */
+const sumOfNumbers = function (n1, n2) {
+  sum = n1 + n2;
+  if (sum > 50 && sum < 80) {
+    return 65;
+  } else return 80;
+};
+console.log(sumOfNumbers(25, 25));
 /* 18. Create a function to convert a number (passed as a parameter) into a string, basing yourself on this example: 
     The number has 3 as a factor â‡’ return `Diego`
     The number has 5 as a factor â‡’ return `Riccardo`
@@ -170,5 +178,14 @@ console.log(firstThreeLetterToLower(`enhh`));
     âš ï¸ The factor is an integer which evenly divides a number without leaving a remainder. One number can have more than one factor, in that case you should return both names. 
 Ex. 15 has both 3 and 5 has factors: the function will return `DiegoRiccardo` */
 
-/* 19. Create a function that that takes a phrase as a parameter and returns its acronym.
-Ex. British Broadcasting Corporation returns `BBC` */
+//? 19. Create a function that that takes a phrase as a parameter and returns its acronym.
+//? Ex. British Broadcasting Corporation returns `BBC`
+const strAcronym = function (phrase) {
+  acronym = [];
+  const splitedPhrase = phrase.toUpperCase().split(` `);
+  for (const eachWord of splitedPhrase) {
+    acronym.push(eachWord[0]);
+  }
+  return acronym.join(``);
+};
+console.log(strAcronym(`british broadcasting corporation`));
