@@ -17,7 +17,7 @@ const checkTwoInts = function (n1, n2) {
   }
 };
 // console.log(checkTwoInts(25, 25));
-/* 3. Create a function to remove a character at a specified position from a given string: pass the position and the string as parameters, return the new string. */
+//? 3. Create a function to remove a character at a specified position from a given string: pass the position and the string as parameters, return the new string. */
 const removeCharacter = function (str, removedPostion) {
   const newstr = str.split(``);
   newstr.splice(removedPostion, 1);
@@ -31,19 +31,17 @@ const returnLargestInt = function (n1, n2, n3) {
   return Math.max(...allNums);
 };
 // console.log(returnLargestInt(3, 2, 7));
-/* 5. Create a function to check if two numbers are in the range 40-60 or 70-100. 
-    Return `true` if they do, return `false` if one (or both) don't. */
+//? 5. Create a function to check if two numbers are in the range 40-60 or 70-100. Return `true` if they do, return `false` if one (or both) don't.
 const checkNumRanges = function (n1, n2) {
-  if (
-    (n1 > 40 && n1 <= 60 && n2 > 40 && n2 <= 60) ||
-    (n1 > 70 && n1 <= 100 && n2 > 70 && n2 <= 100)
-  ) {
-    return true;
+  if (n1 >= 40 && n1 <= 60 && n2 >= 40 && n2 <= 60) {
+    console.log(`in range 40..60`);
+  } else if (n1 >= 70 && n1 <= 100 && n2 >= 70 && n2 <= 100) {
+    console.log(`in range 70..100`);
   } else {
-    return false;
+    console.log(`not in any range`);
   }
 };
-console.log(checkNumRanges(41, 74));
+checkNumRanges(71, 99);
 //?  6. Create a function to create a new string composed of a specified number of copies of a given string. Pass the string and the number of copies as parameters.
 const createNewStrCopies = function (str, n1) {
   for (let i = 0; i < n1; i++) {
@@ -110,7 +108,7 @@ console.log(findLongestString(strs));
 //? Pass the angle as a parameter.
 
 const typeOfaGivenAngle = function (angle) {
-  if (angle >= 0 && angle < 90) {
+  if (angle < 90) {
     return `acute angle`;
   } else if (angle === 90) {
     return `right angle`;
@@ -121,8 +119,12 @@ const typeOfaGivenAngle = function (angle) {
   } else console.log(`please input a value between 0 and 180`);
 };
 console.log(typeOfaGivenAngle(180));
-/* 13. Create a function to find and return the index of the greatest element of a given array of integers that you passed as a parameter. */
-
+//?13. Create a function to find and return the index of the greatest element of a given array of integers that you passed as a parameter.
+const findIndexOfLargestInt = function (arr) {
+  const largest = [...arr].sort((a, b) => b - a)[0];
+  return arr.indexOf(largest);
+};
+console.log(findIndexOfLargestInt([4, 5, 7]));
 //? 14. Create a function to find and return the largest **even** number from an array of integers that is passed a parameter. */
 const largestEvenNum = function (array) {
   let even = [];
@@ -133,7 +135,8 @@ const largestEvenNum = function (array) {
   });
   return Math.max(...even);
 };
-console.log(largestEvenNum([2, 5, 12, 3, 7, 9, 10]));
+const a = [2, 5, 12, 3, 7, 9, 10];
+console.log(largestEvenNum(a));
 // ? 15. Create a function to check from two given integers (passed as parameters) if one is positive and the other is negative. Return `true` if that's the case, return `false` if it's not.
 const checkPositiveAndNegetiveNum = function (n1, n2) {
   if (n1 > 0 && n2 < 0) {
@@ -174,13 +177,14 @@ console.log(sumOfNumbers(25, 25));
     âš ï¸ The factor is an integer which evenly divides a number without leaving a remainder. One number can have more than one factor, in that case you should return both names. 
 Ex. 15 has both 3 and 5 has factors: the function will return `DiegoRiccardo` */
 const convertNumIntoStr = function (num) {
-  if (num % 3 === 0) {
-    return `Obi`;
-  } else if (num % 5 === 0) {
-    return `Kenneth`;
-  } else if (num % 3 === 0 && num % 5 === 0) {
-    return `ObiKenneth`;
-  } else return num;
+  let str = "";
+  if (num % 3 === 0) str += `obi`;
+
+  if (num % 5 === 0) str += `kenneth`;
+
+  if (num % 7 === 0) str += `chigozie`;
+
+  return str;
 };
 console.log(convertNumIntoStr(15));
 //? 19. Create a function that that takes a phrase as a parameter and returns its acronym.
