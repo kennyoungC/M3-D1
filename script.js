@@ -19,11 +19,12 @@ const checkTwoInts = function (n1, n2) {
 // console.log(checkTwoInts(25, 25));
 /* 3. Create a function to remove a character at a specified position from a given string: pass the position and the string as parameters, return the new string. */
 const removeCharacter = function (str, removedPostion) {
-  const toArr = str.split(``);
-  return toArr;
+  const newstr = str.split(``);
+  newstr.splice(removedPostion, 1);
+  return newstr.join(``);
 };
 const newstr = `we are going home soon`;
-console.log(removeCharacter(newstr));
+console.log(removeCharacter(newstr, 3));
 //? 4. Create a function to find and return the largest of three given integers.
 const returnLargestInt = function (n1, n2, n3) {
   let allNums = [n1, n2, n3];
@@ -74,26 +75,20 @@ const sumOfAllEl = function (array) {
 console.log(sumOfAllEl([1, 2, 3]));
 //?9. Create a function to test if an array of lenght 2 contains 1 OR 3. Return `true` is it does, `false` if it doesn't.
 const arrayContainsOneOrThree = function (array) {
-  for (const num of array) {
-    if (num === 1 || num === 3) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  return [1, 3].includes(array[0]) || [1, 3].includes(array[1]);
 };
 console.log(arrayContainsOneOrThree([1, 5]));
 //? 10. Create a function to test if an array of lenght 2 DOES NOT contain 1 or 3. Return `true` if it doesn't, `false` if it does.
 const arrayNotContainsOneOrThree = function (array) {
   for (const num of array) {
-    if (num === 1 || num === 3) {
-      return false;
-    } else {
+    if (num !== 1 || num !== 3) {
       return true;
     }
   }
+  return false;
 };
-console.log(arrayNotContainsOneOrThree([1, 5]));
+
+console.log(`num 10`, arrayNotContainsOneOrThree([1, 5]));
 // ? 11. Create a function to find the longest string from a given array of strings. Pass the array as parameter and return the longest string. */
 const findLongestString = function (array) {
   let longestWord = "";
@@ -104,6 +99,7 @@ const findLongestString = function (array) {
   });
   return longestWord;
 };
+
 const strs = [`fish`, `pepper`, `yam`];
 console.log(findLongestString(strs));
 //? 12. Create a function to find the types of a given angle:
@@ -124,7 +120,7 @@ const typeOfaGivenAngle = function (angle) {
     return `straight angle`;
   } else console.log(`please input a value between 0 and 180`);
 };
-console.log(typeOfaGivenAngle(90));
+console.log(typeOfaGivenAngle(180));
 /* 13. Create a function to find and return the index of the greatest element of a given array of integers that you passed as a parameter. */
 
 //? 14. Create a function to find and return the largest **even** number from an array of integers that is passed a parameter. */
@@ -177,7 +173,16 @@ console.log(sumOfNumbers(25, 25));
     If the number does not have 3,5, or 7, return the original number. 
     âš ï¸ The factor is an integer which evenly divides a number without leaving a remainder. One number can have more than one factor, in that case you should return both names. 
 Ex. 15 has both 3 and 5 has factors: the function will return `DiegoRiccardo` */
-
+const convertNumIntoStr = function (num) {
+  if (num % 3 === 0) {
+    return `Obi`;
+  } else if (num % 5 === 0) {
+    return `Kenneth`;
+  } else if (num % 3 === 0 && num % 5 === 0) {
+    return `ObiKenneth`;
+  } else return num;
+};
+console.log(convertNumIntoStr(15));
 //? 19. Create a function that that takes a phrase as a parameter and returns its acronym.
 //? Ex. British Broadcasting Corporation returns `BBC`
 const strAcronym = function (phrase) {
